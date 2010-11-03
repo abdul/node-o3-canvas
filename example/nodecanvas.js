@@ -20,6 +20,7 @@ var canvasFactory = require('../lib/o3-canvas')
 
 function drawtocontext(ctx)
 {
+	ctx.clearRect(0,0,300,300)
     ctx.fillStyle = "rgb(200,0,0)";
     ctx.fillRect (10, 10, 55, 50);
 
@@ -61,11 +62,9 @@ function draw()
 }
 */
   
-var ctx = canvasFactory(300,300, "argb");
-
-
 var http = require('http');
 http.createServer(function (req, res) {
+  var ctx = canvasFactory(300,300, "argb");
   drawtocontext(ctx);
   var buf = ctx.pngBuffer();
   res.writeHead(200, {'Content-Type': 'text/html'});
