@@ -88,5 +88,6 @@ if(check != buf.toBase64()){
 	console.log("TEST FAILED");
 	process.exit(-1)
 }
+console.log("TEST SUCCEEDED");
 	
 
