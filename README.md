@@ -10,7 +10,9 @@ At Ajax.org we have been using this component as a way to render Canvas charts s
 #Usage
 
 git clone http://github.com/ajaxorg/node-o3-canvas
+
 cd node-o3-canvas/example
+
 node nodeanim.js
 
 open your browser on 127.0.0.1:4000 to see.
