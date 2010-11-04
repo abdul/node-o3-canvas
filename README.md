@@ -3,6 +3,8 @@
 This is a HTML5 spec Canvas component for NodeJS based on LibAGG and Freetype.
 It is implemented using the Ajax.org O3 component system, and should be easy to extend and fix. 
 
+Check blogpost and video here: http://ajaxorg.posterous.com/canvas-api-for-nodejs
+
 At Ajax.org we have been using this component as a way to render Canvas charts server-side to allow emailing or save-as-picture.
 
 #Usage
