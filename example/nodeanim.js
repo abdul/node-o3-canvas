@@ -1,25 +1,10 @@
-/*
- * Copyright (C) 2010 Ajax.org
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation; either version 2 of the License, or (at your option) any later
- * version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU General Public License along with
- * this library; if not, write to the Free Software Foundation, Inc., 51
- * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- */
-
-var canvasFactory = require('../index.js')
+//var createContext = require('../index.js')
+var createContext = require('../lib/o3-canvas')
+ 
+var color  = "rgb(200,200,200)";
 function drawAnim1(ctx)
 {
-	ctx.fillStyle = "rgb(200,200,200)";
+	ctx.fillStyle = color;
 	ctx.fillRect(0,0,300,300);
 	
 	ctx.fillStyle = "rgba(0,0,200,0.5)";
@@ -38,7 +23,7 @@ function drawAnim1(ctx)
 }
 function drawAnim2(ctx)
 {
-    ctx.fillStyle = "rgb(200,200,200)";
+    ctx.fillStyle = color;
 	ctx.fillRect(0,0,300,300);
 	
 	ctx.fillStyle = "rgba(0,0,200,0.5)";
@@ -80,30 +65,24 @@ function drawAnim2(ctx)
     ctx.fill();
     ctx.stroke();    
 }
-/*
-function draw() 
-{
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    drawtocontext(ctx);
-}
-*/
+
   
 var http = require('http');
+var t = 0;
 http.createServer(function (req, res) {
     
-  var ctx1 = canvasFactory(300,300, "argb");
-  var ctx2 = canvasFactory(300,300, "argb");
+  var ctx1 = createContext(300,300, "argb");
+  var ctx2 = createContext(300,300, "argb");
   
   drawAnim1(ctx1);
   drawAnim2(ctx2);
-  
+  console.log("Serving Canvas Images" +(t++));
   var buf = ctx1.pngBuffer();
   var buf2 = ctx2.jpgBuffer();
   res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('<meta http-equiv="refresh" content="0.3;"><img alt="Embedded Image" src="data:image/png;base64,'+buf.toBase64()+'"><'
-   +'<img alt="Embedded Image" src="data:image/png;base64,'+buf2.toBase64()+'">'
-   );
+  res.end("<title>CanvasDemo</title><meta http-equiv='refresh' content='0.3;'>"+
+    "<img alt='Embedded Image' src='data:image/png;base64,"+buf.toBase64()+"'>"+
+     "<img alt='Embedded Image' src='data:image/png;base64,"+buf2.toBase64()+"'>");
 }).listen(4000, "127.0.0.1");
 console.log('Server running at http://127.0.0.1:4000/');
 
