@@ -40,8 +40,8 @@ Binaries supported for Node 0.2.4 stable:
 
  * win32 (through cygwin)
  * osx64
- * lin32 (pending removal of setjmp in libpng)
- * lin64 (pending removal of setjmp in libpng)
+ * lin32
+ * lin64
 
 Other platforms and bit-ness (32/64) will be added to the automated build VM incrementally.
 
