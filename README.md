@@ -9,7 +9,7 @@ At Ajax.org we have been using this component as a way to render Canvas charts s
 
 #Usage
 
-git clone http://github.com/ajaxorg/node-o3-canvas
+git clone http://github.com/ajaxorg/node-o3-canvas.git
 
 cd node-o3-canvas/example
 
